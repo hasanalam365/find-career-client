@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const FindJobs = () => {
   return (
-    <div className="flex gap-5 p-8">
+    <div className="flex flex-col md:flex-col lg:flex-row gap-5 p-8 bg-[#F0F5FA]">
       {/* left side filter */}
-      <div className="bg-gray-300 p-8 w-1/6">
+      <div className="border border-1 border-gray-200 rounded-lg p-8 w-full md:w-full lg:w-1/6">
         <h4 className="texl-xl font-medium">Filters</h4>
         <div className="divider mt-0 mb-0"></div>
         <div>
           <h4 className="mb-2 opacity-70">Working Schedule</h4>
-          <div className="items-start">
+          <div className="flex flex-wrap md:flex lg:block gap-5">
             <div className="">
               <label className="label cursor-pointer w-[105px]">
                 <input type="checkbox" className="checkbox " />

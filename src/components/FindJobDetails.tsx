@@ -3,9 +3,9 @@ import { TbBrandGravatar } from "react-icons/tb";
 
 const FindJobDetails = () => {
   return (
-    <div>
+    <div className="bg-[#F0F5FA]">
       <div className="p-8 flex flex-row gap-3">
-        {/* rigth side jobs */}
+        {/* right side jobs */}
         <div className="w-1/4 overflow-y-auto h-screen">
           <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
             <figure>
@@ -168,7 +168,7 @@ const FindJobDetails = () => {
           </div>
         </div>
         {/* middle job details */}
-        <div className="w-2/4 p-4">
+        <div className="w-2/4 p-4 border border-1 border-gray-200 rounded-lg ">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold">Sr. UX Designer</h2>
             <div className="flex items-center justify-center gap-3">
@@ -244,7 +244,7 @@ const FindJobDetails = () => {
           </div>
         </div>
         {/* job post owner profile */}
-        <div className="w-1/4">
+        <div className="w-1/4 border border-1 border-gray-200 rounded-lg p-4">
           <div>
             <div className="flex items-center justify-between">
               <h4 className="text-lg font-medium">Netflix Inc.</h4>
