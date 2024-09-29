@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/HomePage/Home";
 import FindJobs from "../pages/FindJobs/FindJobs";
 import FindJobDetails from "../components/FindJobDetails";
+import Login from "../pages/Login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/find-job/details/1",
         element: <FindJobDetails></FindJobDetails>,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

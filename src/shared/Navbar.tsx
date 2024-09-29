@@ -23,6 +23,9 @@ const Navbar = () => {
       <NavLink onClick={() => setIsOpenNav(false)} to="/about-us">
         About Us
       </NavLink>
+      <NavLink onClick={() => setIsOpenNav(false)} to="/login">
+        Login
+      </NavLink>
     </>
   );
 

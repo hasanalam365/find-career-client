@@ -1,15 +1,19 @@
+import { FaGraduationCap } from "react-icons/fa";
 import { GoBookmark } from "react-icons/go";
+import { MdOutlineWorkHistory } from "react-icons/md";
 import { TbBrandGravatar } from "react-icons/tb";
 
 const FindJobDetails = () => {
   return (
     <div className="bg-[#F0F5FA]">
-      <div className="p-8 flex flex-row gap-3">
+      <div className="p-8 flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-3">
         {/* right side jobs */}
-        <div className="w-1/4 overflow-y-auto h-screen">
+        <div className="w-full flex flex-col gap-3 lg:w-1/4 overflow-y-auto h-screen">
+          <h4 className="text-lg font-semibold mt-2">Related Jobs</h4>
+          <div className="divider mt-0 mb-0"></div>
           <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
             <figure>
-              <div className="bg-[#E3DBFA] h-[300px] w-[374px] p-4 rounded-lg">
+              <div className="bg-[#E3DBFA] h-[300px] w-full p-4 rounded-lg">
                 <div>
                   <div className="flex items-center justify-between">
                     <div className="bg-white rounded-full py-2 px-4">
@@ -25,7 +29,7 @@ const FindJobDetails = () => {
                   <h3 className="font-semibold">Amazon</h3>
 
                   <div className="">
-                    <h2 className="text-3xl font-bold">
+                    <h2 className="text-xl font-semibold">
                       Senior UI/UX Designer Designer
                     </h2>
                   </div>
@@ -36,14 +40,20 @@ const FindJobDetails = () => {
                     <p className="font-medium">Part Time</p>
                   </div>
                   <div className="border border-1 border-black rounded-full py-1 px-2">
-                    <p className="font-medium">Education: 10th HSC</p>
+                    <div className="flex items-center justify-center gap-3 ">
+                      <FaGraduationCap />
+                      <p> 10th HSC</p>
+                    </div>
                   </div>
                   <div className="border border-1 border-black rounded-full py-1 px-2">
                     <p className="font-medium">Age: 20-25</p>
                   </div>
 
                   <div className="border border-1 border-black rounded-full py-1 px-2">
-                    <p className="font-medium">Experience: 0 Year</p>
+                    <div className="flex items-center justify-center gap-3">
+                      <MdOutlineWorkHistory />
+                      <p className="font-medium"> 0 Year</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -62,7 +72,7 @@ const FindJobDetails = () => {
           </div>
           <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
             <figure>
-              <div className="bg-[#E3DBFA] h-[300px] w-[374px] p-4 rounded-lg">
+              <div className="bg-[#E3DBFA] h-[300px] w-full p-4 rounded-lg">
                 <div>
                   <div className="flex items-center justify-between">
                     <div className="bg-white rounded-full py-2 px-4">
@@ -78,7 +88,7 @@ const FindJobDetails = () => {
                   <h3 className="font-semibold">Amazon</h3>
 
                   <div className="">
-                    <h2 className="text-3xl font-bold">
+                    <h2 className="text-xl font-semibold">
                       Senior UI/UX Designer Designer
                     </h2>
                   </div>
@@ -89,14 +99,20 @@ const FindJobDetails = () => {
                     <p className="font-medium">Part Time</p>
                   </div>
                   <div className="border border-1 border-black rounded-full py-1 px-2">
-                    <p className="font-medium">Education: 10th HSC</p>
+                    <div className="flex items-center justify-center gap-3 ">
+                      <FaGraduationCap />
+                      <p> 10th HSC</p>
+                    </div>
                   </div>
                   <div className="border border-1 border-black rounded-full py-1 px-2">
                     <p className="font-medium">Age: 20-25</p>
                   </div>
 
                   <div className="border border-1 border-black rounded-full py-1 px-2">
-                    <p className="font-medium">Experience: 0 Year</p>
+                    <div className="flex items-center justify-center gap-3">
+                      <MdOutlineWorkHistory />
+                      <p className="font-medium"> 0 Year</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -115,7 +131,7 @@ const FindJobDetails = () => {
           </div>
           <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
             <figure>
-              <div className="bg-[#E3DBFA] h-[300px] w-[374px] p-4 rounded-lg">
+              <div className="bg-[#E3DBFA] h-[300px] w-full p-4 rounded-lg">
                 <div>
                   <div className="flex items-center justify-between">
                     <div className="bg-white rounded-full py-2 px-4">
@@ -131,7 +147,7 @@ const FindJobDetails = () => {
                   <h3 className="font-semibold">Amazon</h3>
 
                   <div className="">
-                    <h2 className="text-3xl font-bold">
+                    <h2 className="text-xl font-semibold">
                       Senior UI/UX Designer Designer
                     </h2>
                   </div>
@@ -142,14 +158,20 @@ const FindJobDetails = () => {
                     <p className="font-medium">Part Time</p>
                   </div>
                   <div className="border border-1 border-black rounded-full py-1 px-2">
-                    <p className="font-medium">Education: 10th HSC</p>
+                    <div className="flex items-center justify-center gap-3 ">
+                      <FaGraduationCap />
+                      <p> 10th HSC</p>
+                    </div>
                   </div>
                   <div className="border border-1 border-black rounded-full py-1 px-2">
                     <p className="font-medium">Age: 20-25</p>
                   </div>
 
                   <div className="border border-1 border-black rounded-full py-1 px-2">
-                    <p className="font-medium">Experience: 0 Year</p>
+                    <div className="flex items-center justify-center gap-3">
+                      <MdOutlineWorkHistory />
+                      <p className="font-medium"> 0 Year</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,7 +190,7 @@ const FindJobDetails = () => {
           </div>
         </div>
         {/* middle job details */}
-        <div className="w-2/4 p-4 border border-1 border-gray-200 rounded-lg ">
+        <div className="w-full md:w-full lg:w-2/4 p-4 border border-1 border-gray-200 rounded-lg ">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold">Sr. UX Designer</h2>
             <div className="flex items-center justify-center gap-3">
@@ -244,7 +266,7 @@ const FindJobDetails = () => {
           </div>
         </div>
         {/* job post owner profile */}
-        <div className="w-1/4 border border-1 border-gray-200 rounded-lg p-4">
+        <div className="w-full md:w-full lg:w-1/4 border border-1 border-gray-200 rounded-lg p-4">
           <div>
             <div className="flex items-center justify-between">
               <h4 className="text-lg font-medium">Netflix Inc.</h4>
