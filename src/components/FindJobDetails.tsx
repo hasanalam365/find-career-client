@@ -1,11 +1,118 @@
 import { GoBookmark } from "react-icons/go";
+import { TbBrandGravatar } from "react-icons/tb";
 
 const FindJobDetails = () => {
   return (
     <div>
       <div className="p-8 flex flex-row gap-3">
         {/* rigth side jobs */}
-        <div className="w-1/4">
+        <div className="w-1/4 overflow-y-auto h-screen">
+          <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
+            <figure>
+              <div className="bg-[#E3DBFA] h-[300px] w-[374px] p-4 rounded-lg">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="bg-white rounded-full py-2 px-4">
+                      <p className="font-medium">20 May, 2024</p>
+                    </div>
+                    <div className="bg-white rounded-full p-1">
+                      <GoBookmark className="text-2xl text-black" />
+                    </div>
+                  </div>
+                </div>
+                {/* Company and Position Title */}
+                <div className="flex flex-col mt-5">
+                  <h3 className="font-semibold">Amazon</h3>
+
+                  <div className="">
+                    <h2 className="text-3xl font-bold">
+                      Senior UI/UX Designer Designer
+                    </h2>
+                  </div>
+                </div>
+                {/* Job Requirement */}
+                <div className="flex flex-wrap gap-3 mt-5">
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Part Time</p>
+                  </div>
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Education: 10th HSC</p>
+                  </div>
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Age: 20-25</p>
+                  </div>
+
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Experience: 0 Year</p>
+                  </div>
+                </div>
+              </div>
+            </figure>
+            <div className="flex items-center justify-between  p-4">
+              <div>
+                <h4 className="text-lg font-semibold">৳250/day</h4>
+                <p className="opacity-90">Deadline: 25 August,2024</p>
+              </div>
+              <div>
+                <button className="btn btn-sm bg-black text-white">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
+            <figure>
+              <div className="bg-[#E3DBFA] h-[300px] w-[374px] p-4 rounded-lg">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="bg-white rounded-full py-2 px-4">
+                      <p className="font-medium">20 May, 2024</p>
+                    </div>
+                    <div className="bg-white rounded-full p-1">
+                      <GoBookmark className="text-2xl text-black" />
+                    </div>
+                  </div>
+                </div>
+                {/* Company and Position Title */}
+                <div className="flex flex-col mt-5">
+                  <h3 className="font-semibold">Amazon</h3>
+
+                  <div className="">
+                    <h2 className="text-3xl font-bold">
+                      Senior UI/UX Designer Designer
+                    </h2>
+                  </div>
+                </div>
+                {/* Job Requirement */}
+                <div className="flex flex-wrap gap-3 mt-5">
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Part Time</p>
+                  </div>
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Education: 10th HSC</p>
+                  </div>
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Age: 20-25</p>
+                  </div>
+
+                  <div className="border border-1 border-black rounded-full py-1 px-2">
+                    <p className="font-medium">Experience: 0 Year</p>
+                  </div>
+                </div>
+              </div>
+            </figure>
+            <div className="flex items-center justify-between  p-4">
+              <div>
+                <h4 className="text-lg font-semibold">৳250/day</h4>
+                <p className="opacity-90">Deadline: 25 August,2024</p>
+              </div>
+              <div>
+                <button className="btn btn-sm bg-black text-white">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
           <div className="card bg-base-100 border border-1 border-gray-300  shadow-xl p-1">
             <figure>
               <div className="bg-[#E3DBFA] h-[300px] w-[374px] p-4 rounded-lg">
@@ -130,10 +237,42 @@ const FindJobDetails = () => {
                 </div>
               </div>
             </div>
+            <div>
+              <h4 className="text-lg font-medium mt-2">Sallary</h4>
+              <p>15000 - 20000 (Negotiable)</p>
+            </div>
           </div>
         </div>
         {/* job post owner profile */}
-        <div className="w-1/4"></div>
+        <div className="w-1/4">
+          <div>
+            <div className="flex items-center justify-between">
+              <h4 className="text-lg font-medium">Netflix Inc.</h4>
+              <TbBrandGravatar />
+            </div>
+            <div className="divider mt-0 mb-0"></div>
+            <div>
+              <div>
+                <p className="font-medium">Posted Job</p>
+                <p className="opacity-75">January 12,2024</p>
+              </div>
+              <div>
+                <p className="font-medium">Location</p>
+                <p className="opacity-75">New York City, USA</p>
+              </div>
+              <div>
+                <p className="font-medium">Deadline</p>
+                <p className="opacity-75">July 31,2024</p>
+              </div>
+            </div>
+            <div className="divider"></div>
+            <div>
+              <button className="btn bg-blue-600 text-white font-medium">
+                Apply Now
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
