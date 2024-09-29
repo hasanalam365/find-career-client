@@ -110,7 +110,7 @@ const Navbar = () => {
       {isOpenNav && (
         <div className="bg-gray-300 h-screen">
           <div className="bg-white flex items-center justify-between p-4">
-            <Link to="/">
+            <Link to="/" onClick={() => setIsOpenNav(!isOpenNav)}>
               <button className="text-xl font-medium">
                 Find<span className="text-orange-600">Career</span>
               </button>
