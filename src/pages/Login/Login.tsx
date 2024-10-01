@@ -1,34 +1,29 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import { UserCredential } from "firebase/auth"; // Import Firebase's user type
 
-const Login = () => {
-  const { signUpUser } = useAuth();
+const Login: React.FC = () => {
+  const { signUpUser } = useAuth(); // Ensure signUpUser is non-null
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email);
-    console.log(password);
-    signUpUser(email, password).then((result) => {
-      console.log(result.user);
-    });
+
+    try {
+      const result: UserCredential = await signUpUser(email, password);
+      console.log(result.user); // result.user is properly typed
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
   };
 
   return (
-    <div className="flex flex-col md:flex-row lg:flex-row h-screen ">
-      {/* Right side */}
-      <div className="flex-1 relative bg-[#46B0E6]">
-        {/* Animated webm */}
-        {/* <Image className="absolute top-0 left-0 w-full h-full object-cover z-50">
-          <source src="/login-img.png" type="png" />
-        </Image> */}
-      </div>
+    <div className="flex flex-col md:flex-row lg:flex-row h-screen">
+      <div className="flex-1 relative bg-[#46B0E6]"></div>
 
-      {/* Left side */}
       <div className="flex-1 flex items-center justify-center">
-        {/* Add your login form here */}
         <div>
           <h2 className="text-2xl font-bold">Login</h2>
           <form onSubmit={handleLogin}>
