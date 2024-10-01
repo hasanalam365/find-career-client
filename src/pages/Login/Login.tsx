@@ -1,6 +1,9 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+  const { signUpUser } = useAuth();
+
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -8,16 +11,19 @@ const Login = () => {
     const password = form.password.value;
     console.log(email);
     console.log(password);
+    signUpUser(email, password).then((result) => {
+      console.log(result.user);
+    });
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row lg:flex-row h-screen ">
       {/* Right side */}
       <div className="flex-1 relative bg-[#46B0E6]">
         {/* Animated webm */}
-        <image className="absolute top-0 left-0 w-full h-full object-cover z-50">
+        {/* <Image className="absolute top-0 left-0 w-full h-full object-cover z-50">
           <source src="/login-img.png" type="png" />
-        </image>
+        </Image> */}
       </div>
 
       {/* Left side */}
