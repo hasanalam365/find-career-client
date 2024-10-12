@@ -17,6 +17,9 @@ interface AuthProviderProps {
 }
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  //SignUp
+
+  //signIn
   const signUpUser = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };

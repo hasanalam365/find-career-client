@@ -26,6 +26,9 @@ const Navbar = () => {
       <NavLink onClick={() => setIsOpenNav(false)} to="/login">
         Login
       </NavLink>
+      <NavLink onClick={() => setIsOpenNav(false)} to="/register">
+        Register
+      </NavLink>
     </>
   );
 
