@@ -114,7 +114,7 @@ const Navbar = () => {
 
       {/* Show small/medium device nav links when the menu is open */}
       {isOpenNav && (
-        <div className="bg-gray-300 h-screen">
+        <div className="bg-gray-300 h-screen overflow-auto">
           <div className="bg-white flex items-center justify-between p-4">
             <Link to="/" onClick={() => setIsOpenNav(!isOpenNav)}>
               <button className="text-xl font-medium">
