@@ -23,9 +23,9 @@ const UserCount = () => {
       </Parallax>
       <div className="relative z-10  gap-5 text-white mb-20 -mt-32 px-20">
         <div className="flex items-center justify-center mb-5">
-          <h2 className="text-4xl font-bold">Our Contribution</h2>
+          <h2 className="text-2xl md:text-4xl font-bold">Our Contribution</h2>
         </div>
-        <div className="flex w-full items-center justify-between">
+        <div className="flex flex-col md:flex-row lg:flex-row w-full items-center justify-center gap-10">
           <div className="flex items-center justify-center flex-col">
             <h4 className="text-5xl font-semibold">4M+</h4>
             <p className="opacity-75">4 Million Daily Active Users</p>{" "}
