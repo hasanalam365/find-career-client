@@ -103,7 +103,9 @@ const FeaturesJobs = () => {
       </div>
 
       <div className="flex items-center justify-center">
-        <button className="btn bg-[#6ACA00] text-white mt-5 hover:bg-blue-500 ">
+        <button
+          className="btn bg-[#6ACA00] text-white mt-5 hover:bg-blue-500 
+        mb-10">
           View All Features Jobs
         </button>
       </div>
