@@ -1,12 +1,12 @@
 import FeaturesJobs from "./FeaturesJobs";
-import UserCount from "./UserCount";
+// import UserCount from "./UserCount";
 import Testimonials from "./Testimonials";
 
 const Home = () => {
   return (
     <div>
       <FeaturesJobs />
-      <UserCount />
+      {/* <UserCount /> */}
       <Testimonials />
     </div>
   );
