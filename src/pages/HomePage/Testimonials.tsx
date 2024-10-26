@@ -17,8 +17,8 @@ const Testimonials = () => {
   const [rating, setRating] = useState(3);
 
   return (
-    <div className="flex items-center justify-center gap-5 p-8 bg-[#F4ECFA]">
-      <div className="w-[40%] space-y-5">
+    <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5 p-4 md:p-8 lg:p-8 bg-[#F4ECFA]">
+      <div className="w-full md:w-[40%] lg:w-[40%] space-y-5">
         <h2 className="text-6xl font-bold">Testimonials</h2>
         <p>
           Thank you for choosing Find Here Company and for sharing your journeys
@@ -41,7 +41,7 @@ const Testimonials = () => {
         }}
         navigation={false}
         modules={[Autoplay, Navigation]}
-        className="mySwiper  w-[55%] shadow-lg">
+        className="mySwiper  w-full md:w-[55%] lg:w-[55%] shadow-lg">
         <SwiperSlide>
           <div className="card bg-base-100 shadow-xl">
             <div className="flex items-center justify-between p-4">
