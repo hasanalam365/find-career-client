@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { UserCredential } from "firebase/auth";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
   const { signUpUser } = useAuth();
@@ -24,14 +26,15 @@ const Login: React.FC = () => {
   console.log(isOpenPassword);
 
   return (
-    <div className="flex flex-col md:flex-row lg:flex-row h-screen">
-      <div className="flex-1 relative bg-[#46B0E6]"></div>
+    <div className="">
+      {/* <div className="flex-1 relative bg-[#46B0E6]"></div> */}
 
       <div className="flex-1 flex items-center justify-center">
         <div>
           <h2 className="text-2xl font-bold">Login to Your Account</h2>
           <p>Welcome back! Select the below login methods</p>
           <form onSubmit={handleLogin}>
+            <label htmlFor="">Email</label>
             <input
               type="email"
               placeholder="Enter Email"
@@ -39,6 +42,7 @@ const Login: React.FC = () => {
               name="email"
             />
             <div className=" w-full relative">
+              <label htmlFor="">Password</label>
               <input
                 name="password"
                 type={`${isOpenPassword ? "text" : "password"}`}
@@ -47,12 +51,12 @@ const Login: React.FC = () => {
               />
               {isOpenPassword ? (
                 <FaEye
-                  className="text-xl absolute top-3 right-3"
+                  className="text-xl absolute top-9 right-3"
                   onClick={() => setIsOpenPassword(false)}
                 />
               ) : (
                 <FaEyeSlash
-                  className="text-xl absolute top-3 right-3"
+                  className="text-xl absolute top-9 right-3"
                   onClick={() => setIsOpenPassword(true)}
                 />
               )}
@@ -68,6 +72,17 @@ const Login: React.FC = () => {
               </button>
             </div>
           </form>
+          <div className="divider">or login with</div>
+          <div className="py-4 flex items-center justify-center gap-5">
+            <FcGoogle className="text-4xl" />
+            <FaFacebook className="text-3xl text-blue-700" />
+          </div>
+          <div className="flex items-center gap-1 justify-center mb-5">
+            <p>Don't have an Account?</p>
+            <Link to={"/register"} className="underline text-blue-600">
+              Register
+            </Link>
+          </div>
         </div>
       </div>
     </div>
