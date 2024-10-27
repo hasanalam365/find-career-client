@@ -25,25 +25,31 @@ const Login: React.FC = () => {
 
       <div className="flex-1 flex items-center justify-center">
         <div>
-          <h2 className="text-2xl font-bold">Login</h2>
+          <h2 className="text-2xl font-bold">Login to Your Account</h2>
+          <p>Welcome back! Select the below login methods</p>
           <form onSubmit={handleLogin}>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Enter Email"
               className="border mb-4 p-2 w-full"
               name="email"
             />
             <input
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder="Enter Password"
               className="border mb-4 p-2 w-full"
             />
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded">
-              Login
-            </button>
+
+            <div className="flex flex-col -mt-3">
+              <a href="#">Forgot Password</a>
+
+              <button
+                type="submit"
+                className="bg-blue-500 text-white py-2 px-4 rounded mt-5">
+                Login
+              </button>
+            </div>
           </form>
         </div>
       </div>
