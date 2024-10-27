@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const { signUpUser } = useAuth();
+  const { signUpUser, googleSignIn } = useAuth();
   const [isOpenPassword, setIsOpenPassword] = useState(false);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +21,12 @@ const Login: React.FC = () => {
     } catch (error) {
       console.error("Error during signup:", error);
     }
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn().then((result) => {
+      console.log(result.user);
+    });
   };
 
   return (
@@ -72,7 +78,7 @@ const Login: React.FC = () => {
           </form>
           <div className="divider">or login with</div>
           <div className="py-4 flex items-center justify-center gap-5">
-            <FcGoogle className="text-4xl" />
+            <FcGoogle onClick={handleGoogleLogin} className="text-4xl" />
             <FaFacebook className="text-3xl text-blue-700" />
           </div>
           <div className="flex items-center gap-1 justify-center mb-5">
