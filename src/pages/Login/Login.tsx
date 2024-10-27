@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { UserCredential } from "firebase/auth"; // Import Firebase's user type
+import { UserCredential } from "firebase/auth";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login: React.FC = () => {
-  const { signUpUser } = useAuth(); // Ensure signUpUser is non-null
+  const { signUpUser } = useAuth();
+  const [isOpenPassword, setIsOpenPassword] = useState(false);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,11 +15,13 @@ const Login: React.FC = () => {
 
     try {
       const result: UserCredential = await signUpUser(email, password);
-      console.log(result.user); // result.user is properly typed
+      console.log(result.user);
     } catch (error) {
       console.error("Error during signup:", error);
     }
   };
+
+  console.log(isOpenPassword);
 
   return (
     <div className="flex flex-col md:flex-row lg:flex-row h-screen">
@@ -34,19 +38,32 @@ const Login: React.FC = () => {
               className="border mb-4 p-2 w-full"
               name="email"
             />
-            <input
-              name="password"
-              type="password"
-              placeholder="Enter Password"
-              className="border mb-4 p-2 w-full"
-            />
+            <div className=" w-full relative">
+              <input
+                name="password"
+                type={`${isOpenPassword ? "text" : "password"}`}
+                placeholder="Enter Password"
+                className="border mb-4 p-2 w-full "
+              />
+              {isOpenPassword ? (
+                <FaEye
+                  className="text-xl absolute top-3 right-3"
+                  onClick={() => setIsOpenPassword(false)}
+                />
+              ) : (
+                <FaEyeSlash
+                  className="text-xl absolute top-3 right-3"
+                  onClick={() => setIsOpenPassword(true)}
+                />
+              )}
+            </div>
 
             <div className="flex flex-col -mt-3">
               <a href="#">Forgot Password</a>
 
               <button
                 type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded mt-5">
+                className="bg-[#6300B3] text-white py-2 px-4 rounded mt-5">
                 Login
               </button>
             </div>
