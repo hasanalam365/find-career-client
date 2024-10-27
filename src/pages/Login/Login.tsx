@@ -26,13 +26,13 @@ const Login: React.FC = () => {
   console.log(isOpenPassword);
 
   return (
-    <div className="">
-      {/* <div className="flex-1 relative bg-[#46B0E6]"></div> */}
-
-      <div className="flex-1 flex items-center justify-center">
-        <div>
-          <h2 className="text-2xl font-bold">Login to Your Account</h2>
-          <p>Welcome back! Select the below login methods</p>
+    <div className="  m-8 flex flex-col w-1/2 mx-auto">
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold">Login to Your Account</h2>
+        <p>Welcome back! Select the below login methods</p>
+      </div>
+      <div className="flex items-center  gap-5 bg-white shadow-xl rounded-3xl p-8 ">
+        <div className="w-1/2">
           <form onSubmit={handleLogin}>
             <label htmlFor="">Email</label>
             <input
@@ -83,6 +83,9 @@ const Login: React.FC = () => {
               Register
             </Link>
           </div>
+        </div>
+        <div>
+          <img src="/login.png" alt="" className="w-[370px] h-[310px]" />
         </div>
       </div>
     </div>
