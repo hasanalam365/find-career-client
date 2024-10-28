@@ -15,8 +15,10 @@ const Register = () => {
       <div className="">
         <div>
           <h2 className="text-2xl font-bold">Register</h2>
-          <form onSubmit={handleRegister}>
-            <div>
+          <form
+            onSubmit={handleRegister}
+            className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-2 ">
+            <div className="md:mr-5">
               <label htmlFor="">Name</label>
               <input
                 type="email"
@@ -35,7 +37,7 @@ const Register = () => {
                 className="border mb-4 p-2 w-full"
               />
             </div>
-            <div>
+            <div className="md:mr-5">
               <label htmlFor="">Phone</label>
               <input
                 name="number"
@@ -54,12 +56,30 @@ const Register = () => {
                     Pick one
                   </option>
                   <option>Under SSC</option>
-                  <option>SSC</option>
-                  <option>HSC</option>
+                  <option>SSC/Dakhil</option>
+                  <option>HSC/Alim</option>
                   <option>Graduated/Degree</option>
                   <option>Others</option>
                 </select>
               </label>
+            </div>
+            <div className="md:mr-5">
+              <label htmlFor="">Password</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="Enter Password"
+                className="border mb-4 p-2 w-full"
+              />
+            </div>
+            <div>
+              <label htmlFor="">Confirm Password</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="Enter Confirm Password"
+                className="border mb-4 p-2 w-full"
+              />
             </div>
             <button
               type="submit"
