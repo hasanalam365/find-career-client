@@ -17,6 +17,8 @@ const auth = getAuth(app);
 interface AuthContextType {
   signUpUser: (email: string, password: string) => Promise<any>;
   googleSignIn: () => Promise<any>;
+  signOutUser: () => Promise<void>;
+  user: User | null;
 }
 
 // Create the context with an initial value of an empty object
@@ -27,7 +29,7 @@ interface AuthProviderProps {
 }
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
 
   //SignUp
@@ -45,7 +47,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   //sign Out User
   const signOutUser = () => {
     setLoading(true);
-    return signOut(auth);
+    return signOut(auth).then(() => setUser(null));
   };
 
   useEffect(() => {
