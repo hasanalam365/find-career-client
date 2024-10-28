@@ -50,8 +50,6 @@ const Navbar = () => {
     };
   }, []);
 
-  console.log(user);
-
   return (
     <div>
       {/* The main navbar container */}
