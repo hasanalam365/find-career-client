@@ -4,10 +4,12 @@ import { IoMdNotifications } from "react-icons/io";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { RxAvatar } from "react-icons/rx";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [isOpenNav, setIsOpenNav] = useState(false);
+  const { user } = useAuth();
 
   const navLinks = (
     <>
@@ -101,10 +103,20 @@ const Navbar = () => {
                   <IoMdNotifications />
                 </div>
                 <div>
-                  <h4 className="font-medium">User Name</h4>
+                  <h4 className="font-medium">
+                    {user ? user.displayName : "User Name"}
+                  </h4>
                 </div>
                 <div className="text-2xl">
-                  <RxAvatar />
+                  {user ? (
+                    <img
+                      src={user?.photoURL}
+                      alt=""
+                      className="w-[30px] h-[30px] rounded-full"
+                    />
+                  ) : (
+                    <RxAvatar />
+                  )}
                 </div>
               </div>
             )}
