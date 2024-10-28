@@ -9,7 +9,7 @@ import useAuth from "../hooks/useAuth";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [isOpenNav, setIsOpenNav] = useState(false);
-  const { user } = useAuth();
+  const { user, signOutUser } = useAuth();
 
   const navLinks = (
     <>
@@ -31,6 +31,7 @@ const Navbar = () => {
       <NavLink onClick={() => setIsOpenNav(false)} to="/register">
         Register
       </NavLink>
+      <button onClick={() => signOutUser()}>Logout</button>
     </>
   );
 
@@ -48,6 +49,8 @@ const Navbar = () => {
       window.removeEventListener("scroll", changeBackground);
     };
   }, []);
+
+  console.log(user);
 
   return (
     <div>
