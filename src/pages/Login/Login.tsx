@@ -24,9 +24,13 @@ const Login: React.FC = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleSignIn().then((result) => {
-      console.log(result.user);
-    });
+    googleSignIn()
+      .then((result: UserCredential) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error("Error during Google sign-in:", error);
+      });
   };
 
   return (
