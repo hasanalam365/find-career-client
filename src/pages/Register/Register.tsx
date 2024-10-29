@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [education, setEducation] = useState("Pick One");
+
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -9,6 +11,8 @@ const Register = () => {
     const password = form.password.value;
     console.log(email, "password:", password);
   };
+
+  console.log(education);
 
   return (
     <div className="p-4 md:p-8 md:w-[90%] lg:p-8 lg:w-3/4 mx-auto">
@@ -52,9 +56,13 @@ const Register = () => {
           </div>
           <div>
             <label htmlFor="education">Education</label>
-            <select name="education" className="border p-2 w-full">
-              <option disabled selected>
-                Pick one
+            <select
+              name="education"
+              value={education}
+              onChange={(e) => setEducation(e.target.value)}
+              className="border p-2 w-full">
+              <option disabled defaultValue={""}>
+                Pick One
               </option>
               <option>Under SSC</option>
               <option>SSC/Dakhil</option>
