@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   const [education, setEducation] = useState("Pick One");
+  const [errorPassword, setErrorPassword] = useState("");
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, "password:", password);
-  };
+    const confirmPassword = form.confirmPassword.value;
 
-  console.log(education);
+    if (confirmPassword !== password) {
+      return setErrorPassword("Please! check your password again.......");
+    }
+  };
 
   return (
     <div className="p-4 md:p-8 md:w-[90%] lg:p-8 lg:w-3/4 mx-auto">
@@ -33,7 +36,7 @@ const Register = () => {
               name="name"
               type="text"
               placeholder="Enter Name"
-              className="border p-2 w-full"
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
             />
           </div>
           <div>
@@ -42,7 +45,7 @@ const Register = () => {
               name="email"
               type="email"
               placeholder="Enter Email"
-              className="border p-2 w-full"
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
             />
           </div>
           <div className="md:mr-5">
@@ -51,7 +54,7 @@ const Register = () => {
               name="phone"
               type="text"
               placeholder="Enter Phone"
-              className="border p-2 w-full"
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
             />
           </div>
           <div>
@@ -60,7 +63,7 @@ const Register = () => {
               name="education"
               value={education}
               onChange={(e) => setEducation(e.target.value)}
-              className="border p-2 w-full">
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
               <option disabled defaultValue={""}>
                 Pick One
               </option>
@@ -77,7 +80,7 @@ const Register = () => {
               name="password"
               type="password"
               placeholder="Enter Password"
-              className="border p-2 w-full"
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
             />
           </div>
           <div>
@@ -86,8 +89,13 @@ const Register = () => {
               name="confirmPassword"
               type="password"
               placeholder="Enter Confirm Password"
-              className="border p-2 w-full"
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
             />
+            {errorPassword ? (
+              <p className="text-red-600 text-sm">{errorPassword} </p>
+            ) : (
+              ""
+            )}
           </div>
           <button
             type="submit"
