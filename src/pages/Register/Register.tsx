@@ -11,8 +11,8 @@ const Register = () => {
   };
 
   return (
-    <div className="">
-      <div className="">
+    <div className="p-8">
+      <div className="w-3/4 mx-auto p-6 shadow-xl rounded-3xl">
         <div>
           <h2 className="text-2xl font-bold">Register</h2>
           <form
