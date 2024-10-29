@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
 
 const Register = () => {
   const [education, setEducation] = useState("Pick One");
   const [errorPassword, setErrorPassword] = useState("");
   const [othersInput, setOthersInput] = useState(false);
+  const [errorCaptcha, setErrorCaptcha] = useState("");
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -12,9 +18,18 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+    const captchaValue = form.captcha.value;
 
     if (confirmPassword !== password) {
       return setErrorPassword("Please! check your password again.......");
+    } else {
+      setErrorPassword("");
+    }
+
+    if (!validateCaptcha(captchaValue)) {
+      return setErrorCaptcha("Captcha does not match , please try again");
+    } else {
+      setErrorCaptcha("");
     }
   };
 
@@ -23,6 +38,10 @@ const Register = () => {
     setEducation(selectedEducation);
     setOthersInput(selectedEducation === "Others");
   };
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
 
   return (
     <div className="p-4 md:p-8 md:w-[90%] lg:p-8 lg:w-3/4 mx-auto">
@@ -113,6 +132,20 @@ const Register = () => {
               <p className="text-red-600 text-sm">{errorPassword} </p>
             ) : (
               ""
+            )}
+          </div>
+          <div className="md:mr-5">
+            <label htmlFor="captcha">
+              <LoadCanvasTemplate />
+            </label>
+            <input
+              name="captcha"
+              type="text"
+              placeholder="Enter Captcha"
+              className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
+            />
+            {errorCaptcha && (
+              <p className="text-red-600 text-sm"> {errorCaptcha}</p>
             )}
           </div>
           <button
