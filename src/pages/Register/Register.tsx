@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const [education, setEducation] = useState("Pick One");
   const [errorPassword, setErrorPassword] = useState("");
+  const [othersInput, setOthersInput] = useState(false);
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +16,12 @@ const Register = () => {
     if (confirmPassword !== password) {
       return setErrorPassword("Please! check your password again.......");
     }
+  };
+
+  const handleEducationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedEducation = e.target.value;
+    setEducation(selectedEducation);
+    setOthersInput(selectedEducation === "Others");
   };
 
   return (
@@ -62,7 +69,7 @@ const Register = () => {
             <select
               name="education"
               value={education}
-              onChange={(e) => setEducation(e.target.value)}
+              onChange={handleEducationChange}
               className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
               <option disabled defaultValue={""}>
                 Pick One
@@ -74,6 +81,17 @@ const Register = () => {
               <option>Others</option>
             </select>
           </div>
+          {othersInput && (
+            <div className="col-span-2">
+              <label htmlFor="education">Others Education</label>
+              <input
+                name="others"
+                type="text"
+                placeholder="Others education details"
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
+              />
+            </div>
+          )}
           <div className="md:mr-5">
             <label htmlFor="password">Password</label>
             <input
