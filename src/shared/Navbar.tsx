@@ -108,7 +108,7 @@ const Navbar = () => {
                     {user ? user.displayName : "User Name"}
                   </h4>
                 </div>
-                <div className="text-2xl">
+                <Link to="/dashboard" className="text-2xl">
                   {user ? (
                     <img
                       src={user?.photoURL}
@@ -118,7 +118,7 @@ const Navbar = () => {
                   ) : (
                     <RxAvatar />
                   )}
-                </div>
+                </Link>
               </div>
             )}
           </div>
