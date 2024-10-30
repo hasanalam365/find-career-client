@@ -4,37 +4,45 @@ import { CiLogout } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import { IoChatbubblesOutline, IoHomeOutline, IoMenu } from "react-icons/io5";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const DashNav = () => {
   const [dashNavIsOpen, setDashNavIsOpen] = useState(false);
+  const { user, signOutUser } = useAuth();
 
   return (
     <div>
-      <div className="flex flex-col h-full p-3 border-2 dark:bg-gray-50 dark:text-gray-800">
+      <div className="flex flex-col h-screen p-3 border-r-2  dark:bg-gray-50 dark:text-gray-800">
         <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h2>Dashboard</h2>
-            <button
-              onClick={() => setDashNavIsOpen(!dashNavIsOpen)}
-              className="p-2">
-              {dashNavIsOpen ? (
-                <CgMenuRight className="text-2xl" />
-              ) : (
-                <IoMenu className="text-2xl" />
-              )}
-            </button>
-          </div>
-          <div className="divider"></div>
-          <div className="flex-1">
-            <ul className="pt-2 pb-4 space-y-1 text-sm">
-              <li className="rounded-sm">
+          <div className="flex items-center p-2 gap-5 ">
+            <img
+              src={user?.photoURL}
+              alt=""
+              className="w-12 h-12 rounded-lg dark:bg-gray-500"
+            />
+            <div>
+              <h2 className="text-lg font-semibold">{user?.displayName}</h2>
+              <span className="flex items-center space-x-1">
                 <a
                   rel="noopener noreferrer"
                   href="#"
+                  className="text-xs hover:underline dark:text-gray-600">
+                  {user?.email}
+                </a>
+              </span>
+            </div>
+          </div>
+          <div className="border-t-2 border-dashed"></div>
+          <div className="flex-1">
+            <ul className="pt-2 pb-4 space-y-1 text-sm">
+              <li className="rounded-sm">
+                <Link
+                  to="/"
                   className="flex items-center p-2 space-x-3 rounded-md">
                   <IoHomeOutline className="text-xl" />
                   <span>Home</span>
-                </a>
+                </Link>
               </li>
 
               <li className="rounded-sm">
@@ -72,28 +80,10 @@ const DashNav = () => {
                   href="#"
                   className="flex items-center p-2 space-x-3 rounded-md">
                   <CiLogout className="text-xl" />
-                  <span>Logout</span>
+                  <button onClick={() => signOutUser()}>Logout</button>
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
-        <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
-          <img
-            src="https://source.unsplash.com/100x100/?portrait"
-            alt=""
-            className="w-12 h-12 rounded-lg dark:bg-gray-500"
-          />
-          <div>
-            <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
-            <span className="flex items-center space-x-1">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="text-xs hover:underline dark:text-gray-600">
-                View profile
-              </a>
-            </span>
           </div>
         </div>
       </div>

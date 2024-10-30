@@ -3,11 +3,11 @@ import DashNav from "../pages/Dashboard/DashNav";
 
 const Dashboard = () => {
   return (
-    <div className="">
+    <div className="flex gap-10">
       <div>
         <DashNav />
       </div>
-      {/* <div className="hidden md:block lg:block">Hi Dashboard</div> */}
+      <div className="">Hi Dashboard</div>
     </div>
   );
 };
