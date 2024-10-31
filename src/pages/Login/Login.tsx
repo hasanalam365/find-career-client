@@ -3,11 +3,13 @@ import useAuth from "../../hooks/useAuth";
 import { UserCredential } from "firebase/auth";
 import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
   const { signUpUser, googleSignIn } = useAuth();
   const [isOpenPassword, setIsOpenPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,8 +27,8 @@ const Login: React.FC = () => {
 
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then((result: UserCredential) => {
-        console.log(result.user);
+      .then(() => {
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         console.error("Error during Google sign-in:", error);
