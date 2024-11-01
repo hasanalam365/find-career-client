@@ -1,11 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import useAuth from "../hooks/useAuth";
 import { Navigate, useLocation } from "react-router";
 import { ScaleLoader } from "react-spinners";
 
-const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+interface PrivateRouteProps {
+  children: ReactNode;
+}
 
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -17,12 +20,10 @@ const PrivateRoute = ({ children }) => {
   }
 
   if (user) {
-    return children;
+    return <>{children}</>;
   }
 
-  return (
-    <Navigate to="/login" state={location?.pathname || "/"} replace></Navigate>
-  );
+  return <Navigate to="/login" state={location?.pathname || "/"} replace />;
 };
 
 export default PrivateRoute;

@@ -19,6 +19,7 @@ interface AuthContextType {
   googleSignIn: () => Promise<any>;
   signOutUser: () => Promise<void>;
   user: User | null;
+  loading: boolean;
 }
 
 // Create the context with an initial value of an empty object
