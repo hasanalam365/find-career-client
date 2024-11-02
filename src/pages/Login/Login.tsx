@@ -19,7 +19,7 @@ const Login: React.FC = () => {
 
     try {
       const result: UserCredential = await signUpUser(email, password);
-      console.log(result.user);
+      
     } catch (error) {
       console.error("Error during signup:", error);
     }

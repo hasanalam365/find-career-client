@@ -66,13 +66,13 @@ const DashNav = () => {
               </li>
 
               <li className="rounded-sm">
-                <a
+                <Link
                   rel="noopener noreferrer"
-                  href="#"
+                  to="/dashboard/profile"
                   className="flex items-center p-2 space-x-3 rounded-md">
                   <FiEdit className="text-xl" />
                   <span>Profile</span>
-                </a>
+                </Link>
               </li>
               <li className="rounded-sm">
                 <a

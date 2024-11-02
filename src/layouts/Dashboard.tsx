@@ -1,5 +1,6 @@
 import React from "react";
 import DashNav from "../pages/Dashboard/DashNav";
+import { Outlet } from "react-router";
 
 const Dashboard = () => {
   return (
@@ -7,7 +8,7 @@ const Dashboard = () => {
       <div>
         <DashNav />
       </div>
-      <div className="">Hi Dashboard</div>
+      <Outlet></Outlet>
     </div>
   );
 };
