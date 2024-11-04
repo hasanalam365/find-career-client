@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import Dashboard from "../layouts/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Dashboard/Profile";
+import CreateJob from "../pages/Dashboard/CreateJob";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <Profile />,
+      },
+      {
+        path: "/dashboard/create-job",
+        element: <CreateJob />,
       },
     ],
   },

@@ -3,7 +3,12 @@ import { CgMenuRight } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
-import { IoChatbubblesOutline, IoHomeOutline, IoMenu } from "react-icons/io5";
+import {
+  IoChatbubblesOutline,
+  IoCreate,
+  IoHomeOutline,
+  IoMenu,
+} from "react-icons/io5";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
@@ -63,6 +68,16 @@ const DashNav = () => {
                   <FaRegHeart className="text-[18px]" />
                   <span>Wishlist</span>
                 </a>
+              </li>
+
+              <li className="rounded-sm dark:bg-gray-100 dark:text-gray-900">
+                <Link
+                  to="/dashboard/create-job"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-2 space-x-3 rounded-md">
+                  <IoCreate className="text-[18px]" />
+                  <span>Create Job</span>
+                </Link>
               </li>
 
               <li className="rounded-sm">
