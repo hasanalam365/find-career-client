@@ -5,6 +5,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const [education, setEducation] = useState("Pick One");
@@ -12,10 +13,14 @@ const Register = () => {
   const [othersInput, setOthersInput] = useState(false);
   const [errorCaptcha, setErrorCaptcha] = useState("");
 
+  const axiosPublic = useAxiosPublic();
+
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const name = form.name.value;
     const email = form.email.value;
+    const phone = form.phone.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     const captchaValue = form.captcha.value;
@@ -30,6 +35,16 @@ const Register = () => {
       return setErrorCaptcha("Captcha does not match , please try again");
     } else {
       setErrorCaptcha("");
+
+      const userInfo = {
+        name: name,
+        email: email,
+        phone: phone,
+      };
+
+      //api called
+      const result = axiosPublic.post("/addUser", userInfo);
+      console.log(result);
     }
   };
 

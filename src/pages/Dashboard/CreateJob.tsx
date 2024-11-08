@@ -12,6 +12,10 @@ const JobPost = () => {
     setEducation(event.target.value);
   };
 
+
+
+
+
   return (
     <div>
       <div className="p-4 md:p-8 md:w-[90%] lg:p-8 lg:w-3/4 mx-auto">
