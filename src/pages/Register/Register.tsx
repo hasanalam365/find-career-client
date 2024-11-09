@@ -21,9 +21,12 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const phone = form.phone.value;
+
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     const captchaValue = form.captcha.value;
+
+    const otherEdu = othersInput ? form.others.value : "";
 
     if (confirmPassword !== password) {
       return setErrorPassword("Please! check your password again.......");
@@ -40,6 +43,8 @@ const Register = () => {
         name: name,
         email: email,
         phone: phone,
+        education: education,
+        others: othersInput ? otherEdu : "",
       };
 
       //api called
