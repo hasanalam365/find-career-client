@@ -6,6 +6,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [education, setEducation] = useState("Pick One");
@@ -15,7 +16,7 @@ const Register = () => {
 
   const axiosPublic = useAxiosPublic();
 
-  const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.name.value;
@@ -48,8 +49,11 @@ const Register = () => {
       };
 
       //api called
-      const result = axiosPublic.post("/addUser", userInfo);
-      console.log(result);
+      const res = await axiosPublic.post("/addUser", userInfo);
+      console.log(res.data);
+      if (res.data.insertedId) {
+        toast("Registration Done");
+      }
     }
   };
 
