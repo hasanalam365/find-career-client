@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -7,12 +7,15 @@ import {
 } from "react-simple-captcha";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const { signUpUser, signOutUser } = useAuth();
   const [education, setEducation] = useState("Pick One");
   const [errorPassword, setErrorPassword] = useState("");
   const [othersInput, setOthersInput] = useState(false);
   const [errorCaptcha, setErrorCaptcha] = useState("");
+  const navigate = useNavigate();
 
   const axiosPublic = useAxiosPublic();
 
@@ -22,7 +25,6 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const phone = form.phone.value;
-
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     const captchaValue = form.captcha.value;
@@ -50,9 +52,12 @@ const Register = () => {
 
       //api called
       const res = await axiosPublic.post("/addUser", userInfo);
-      console.log(res.data);
+
       if (res.data.insertedId) {
         toast("Registration Done");
+        await signUpUser(email, confirmPassword);
+        await signOutUser();
+        navigate("/login");
       }
     }
   };

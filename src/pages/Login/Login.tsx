@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const { signUpUser, googleSignIn } = useAuth();
+  const { signInUser, googleSignIn } = useAuth();
   const [isOpenPassword, setIsOpenPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,8 +18,8 @@ const Login: React.FC = () => {
     const password = form.password.value;
 
     try {
-      const result: UserCredential = await signUpUser(email, password);
-      
+      await signInUser(email, password);
+      navigate(location?.state || "/");
     } catch (error) {
       console.error("Error during signup:", error);
     }

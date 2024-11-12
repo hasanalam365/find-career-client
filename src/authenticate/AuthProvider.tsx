@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   User,
@@ -15,6 +16,7 @@ const auth = getAuth(app);
 
 // Define the shape of AuthContext
 interface AuthContextType {
+  signInUser: (email: string, password: string) => Promise<any>;
   signUpUser: (email: string, password: string) => Promise<any>;
   googleSignIn: () => Promise<any>;
   signOutUser: () => Promise<void>;
@@ -37,6 +39,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const signUpUser = (email: string, password: string) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  //sign in
+  const signInUser = (email: string, password: string) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   //goole login
@@ -62,6 +70,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const allValues = {
+    signInUser,
     signUpUser,
     googleSignIn,
     user,
