@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const JobPost = () => {
+  const { user } = useAuth();
+
   const [education, setEducation] = useState("");
 
   const handleRegister = (event) => {
@@ -12,13 +15,9 @@ const JobPost = () => {
     setEducation(event.target.value);
   };
 
-
-
-
-
   return (
     <div>
-      <div className="p-4 md:p-8 md:w-[90%] lg:p-8 lg:w-3/4 mx-auto">
+      <div className="p-4 md:p-8  lg:p-8  mx-auto">
         <div className="mb-5">
           <h2 className="text-2xl font-bold mb-2">Job a Post</h2>
           <p className="md:w-3/4">
@@ -79,6 +78,26 @@ const JobPost = () => {
                 name="others"
                 type="text"
                 placeholder="Other education details"
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
+              />
+            </div>
+            <div className="md:mr-5">
+              <label htmlFor="holderName">Your Name</label>
+              <input
+                value={user?.displayName}
+                name="holderName"
+                type="text"
+                placeholder="Enter Holder Name"
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                value={user?.email}
+                name="email"
+                type="email"
+                placeholder="Enter Email"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
