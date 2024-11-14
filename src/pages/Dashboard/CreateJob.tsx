@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const JobPost = () => {
   const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+
+  const { data: userData } = useQuery({
+    queryKey: ["user-data"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/users/${user?.email}`);
+      return res.data;
+    },
+  });
+
+  console.log(userData);
 
   const [education, setEducation] = useState("");
 
@@ -84,7 +97,7 @@ const JobPost = () => {
             <div className="md:mr-5">
               <label htmlFor="holderName">Your Name</label>
               <input
-                value={user?.displayName}
+                value={user?.displayName || userData.name}
                 name="holderName"
                 type="text"
                 placeholder="Enter Holder Name"
