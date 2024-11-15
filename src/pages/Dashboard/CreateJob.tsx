@@ -15,7 +15,7 @@ const JobPost = () => {
     },
   });
 
-  console.log(userData);
+
 
   const [education, setEducation] = useState("");
 
@@ -97,28 +97,30 @@ const JobPost = () => {
             <div className="md:mr-5">
               <label htmlFor="holderName">Your Name</label>
               <input
-                value={user?.displayName || userData.name}
+                value={user?.displayName || userData?.name || ""}
                 name="holderName"
                 type="text"
                 placeholder="Enter Holder Name"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
+                readOnly
               />
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="holderEmail">Email</label>
               <input
-                value={user?.email}
-                name="email"
+                value={user?.email || userData?.email || ""}
+                name="holderEmail"
                 type="email"
                 placeholder="Enter Email"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
+                readOnly
               />
             </div>
           </form>
           <button
             type="submit"
             className="bg-[#6300B3] text-white py-2 px-4 rounded mt-5 col-span-2">
-            Register
+            Submit
           </button>
         </div>
       </div>
