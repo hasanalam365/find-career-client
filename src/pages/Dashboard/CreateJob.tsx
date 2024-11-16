@@ -15,8 +15,6 @@ const JobPost = () => {
     },
   });
 
-
-
   const [education, setEducation] = useState("");
 
   const handleRegister = (event) => {
@@ -42,29 +40,29 @@ const JobPost = () => {
             onSubmit={handleRegister}
             className="md:grid lg:grid gap-4 md:grid-cols-2 lg:grid-cols-2">
             <div className="md:mr-5">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="companyName">Company Name</label>
               <input
-                name="name"
+                name="companyName"
                 type="text"
-                placeholder="Enter Name"
+                placeholder="Enter Company Name"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="Location">Location</label>
               <input
-                name="email"
-                type="email"
-                placeholder="Enter Email"
+                name="socation"
+                type="text"
+                placeholder="Enter Location"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
             <div className="md:mr-5">
-              <label htmlFor="phone">Phone</label>
+              <label htmlFor="Sallary">Sallary</label>
               <input
-                name="phone"
+                name="sallary"
                 type="text"
-                placeholder="Enter Phone"
+                placeholder="Enter Sallary"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
@@ -85,14 +83,22 @@ const JobPost = () => {
                 <option>Others</option>
               </select>
             </div>
-            <div className="col-span-2">
-              <label htmlFor="others">Other Education</label>
+            <div className="md:mr-5">
+              <label htmlFor="Job Type">Job Type</label>
               <input
-                name="others"
+                name="jobType"
                 type="text"
-                placeholder="Other education details"
+                placeholder="Enter Job Type"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
+            </div>
+            <div className="md:mr-5">
+              <label htmlFor="Responsibility">Responsibility</label>
+              <textarea
+                name="responsibility"
+                id=""
+                placeholder="Type..."
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"></textarea>
             </div>
             <div className="md:mr-5">
               <label htmlFor="holderName">Your Name</label>
