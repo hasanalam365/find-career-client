@@ -26,6 +26,12 @@ const JobPost = () => {
     setEducation(event.target.value);
   };
 
+  const handleJobCreate = (e) => {
+    const form = e.target;
+    const companyName = form.companyName.value;
+    console.log(companyName);
+  };
+
   return (
     <div>
       <div className="p-4 md:p-8  lg:p-8  mx-auto">
@@ -37,7 +43,7 @@ const JobPost = () => {
         </div>
         <div className="p-6 shadow-xl rounded-3xl">
           <form
-            onSubmit={handleRegister}
+            onSubmit={handleJobCreate}
             className="md:grid lg:grid gap-4 md:grid-cols-2 lg:grid-cols-2">
             <div className="md:mr-5">
               <label htmlFor="companyName">Company Name</label>
