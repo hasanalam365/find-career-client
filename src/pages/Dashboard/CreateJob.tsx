@@ -19,7 +19,6 @@ const JobPost = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log("Form submitted");
   };
 
   const handleEducationChange = (event) => {
@@ -29,7 +28,6 @@ const JobPost = () => {
   const handleJobCreate = (e) => {
     const form = e.target;
     const companyName = form.companyName.value;
-    console.log(companyName);
   };
 
   return (
@@ -38,7 +36,7 @@ const JobPost = () => {
         <div className="mb-5">
           <h2 className="text-2xl font-bold mb-2">Job a Post</h2>
           <p className="md:w-3/4">
-            Find the best talent for your company/industry
+            Find the best talent for your company/industry/peoples
           </p>
         </div>
         <div className="p-6 shadow-xl rounded-3xl">
