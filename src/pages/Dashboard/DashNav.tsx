@@ -61,13 +61,12 @@ const DashNav = () => {
               </li>
 
               <li className="rounded-sm dark:bg-gray-100 dark:text-gray-900">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
+                <Link
+                  to="/dashboard/wishlist"
                   className="flex items-center p-2 space-x-3 rounded-md">
                   <FaRegHeart className="text-[18px]" />
                   <span>Wishlist</span>
-                </a>
+                </Link>
               </li>
 
               <li className="rounded-sm dark:bg-gray-100 dark:text-gray-900">

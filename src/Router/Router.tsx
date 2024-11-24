@@ -9,6 +9,7 @@ import Dashboard from "../layouts/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Dashboard/Profile";
 import CreateJob from "../pages/Dashboard/CreateJob";
+import Wishlist from "../pages/Dashboard/Wishlist";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/create-job",
         element: <CreateJob />,
+      },
+      {
+        path: "/dashboard/wishlist",
+        element: <Wishlist />,
       },
     ],
   },
