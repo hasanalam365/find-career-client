@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const JobPost = () => {
+interface UserData {
+  name: string;
+  email: string;
+}
+
+const JobPost: React.FC = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const { data: userData } = useQuery({
+  const { data: userData } = useQuery<UserData>({
     queryKey: ["user-data"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/users/${user?.email}`);
@@ -15,28 +20,42 @@ const JobPost = () => {
     },
   });
 
-  const [education, setEducation] = useState("");
+  const [education, setEducation] = useState<string>("");
 
-  const handleRegister = (event) => {
-    event.preventDefault();
-  };
-
-  const handleEducationChange = (event) => {
+  const handleEducationChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setEducation(event.target.value);
   };
 
-  const handleJobCreate = (e) => {
-    const form = e.target;
+  const handleJobCreate = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
     const companyName = form.companyName.value;
+    const location = form.location.value;
+    const salary = form.sallary.value;
+    const jobType = form.jobType.value;
+    const responsibility = form.responsibility.value;
+    const holderName = user?.displayName || userData?.name;
+    const holderEmail = user?.email || userData?.email;
+
+    console.log({
+      companyName,
+      location,
+      salary,
+      jobType,
+      holderName,
+      holderEmail,
+      responsibility,
+      education,
+    });
   };
 
   return (
     <div>
-      <div className="p-4 md:p-8  lg:p-8  mx-auto">
+      <div className="p-4 md:p-8 lg:p-8 mx-auto">
         <div className="mb-5">
-          <h2 className="text-2xl font-bold mb-2">Job a Post</h2>
+          <h2 className="text-2xl font-bold mb-2">Post a Job</h2>
           <p className="md:w-3/4">
-            Find the best talent for your company/industry/peoples
+            Find the best talent for your company/industry/people
           </p>
         </div>
         <div className="p-6 shadow-xl rounded-3xl">
@@ -55,18 +74,18 @@ const JobPost = () => {
             <div>
               <label htmlFor="Location">Location</label>
               <input
-                name="socation"
+                name="location"
                 type="text"
                 placeholder="Enter Location"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
             <div className="md:mr-5">
-              <label htmlFor="Sallary">Sallary</label>
+              <label htmlFor="Sallary">Salary</label>
               <input
                 name="sallary"
                 type="text"
-                placeholder="Enter Sallary"
+                placeholder="Enter Salary"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
@@ -84,7 +103,7 @@ const JobPost = () => {
                 <option>SSC/Dakhil</option>
                 <option>HSC/Alim</option>
                 <option>Graduated/Degree</option>
-                <option>Others</option>
+                <option>Others (any type)</option>
               </select>
             </div>
             <div className="md:mr-5">
@@ -100,7 +119,6 @@ const JobPost = () => {
               <label htmlFor="Responsibility">Responsibility</label>
               <textarea
                 name="responsibility"
-                id=""
                 placeholder="Type..."
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"></textarea>
             </div>
@@ -126,12 +144,12 @@ const JobPost = () => {
                 readOnly
               />
             </div>
+            <button
+              type="submit"
+              className="bg-[#6300B3] text-white py-2 px-4 rounded mt-5 col-span-2">
+              Submit
+            </button>
           </form>
-          <button
-            type="submit"
-            className="bg-[#6300B3] text-white py-2 px-4 rounded mt-5 col-span-2">
-            Submit
-          </button>
         </div>
       </div>
     </div>
