@@ -2,6 +2,8 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 interface UserData {
   name: string;
@@ -11,6 +13,7 @@ interface UserData {
 const JobPost: React.FC = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const { data: userData } = useQuery<UserData>({
     queryKey: ["user-data"],
@@ -26,7 +29,7 @@ const JobPost: React.FC = () => {
     setEducation(event.target.value);
   };
 
-  const handleJobCreate = (e: FormEvent<HTMLFormElement>) => {
+  const handleJobCreate = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const companyName = form.companyName.value;
@@ -37,7 +40,7 @@ const JobPost: React.FC = () => {
     const holderName = user?.displayName || userData?.name;
     const holderEmail = user?.email || userData?.email;
 
-    console.log({
+    const jobData = {
       companyName,
       location,
       salary,
@@ -46,7 +49,16 @@ const JobPost: React.FC = () => {
       holderEmail,
       responsibility,
       education,
-    });
+    };
+    try {
+      const res = await axiosPublic.post("/createJob", jobData);
+      if (res.data.insertedId) {
+        toast("Successfully done");
+        navigate("/dashboard");
+      }
+    } catch {
+      console.log("error ");
+    }
   };
 
   return (
