@@ -16,13 +16,15 @@ const DashNav = () => {
   const [dashNavIsOpen, setDashNavIsOpen] = useState(false);
   const { user, signOutUser } = useAuth();
 
+  console.log(user?.photoURL);
+
   return (
     <div>
-      <div className="flex flex-col h-screen p-3 border-r-2  dark:bg-gray-50 dark:text-gray-800">
+      <div className="flex flex-col h-screen p-3 border-r-2  dark:bg-gray-50 dark:text-gray-800  w-[250px]">
         <div className="space-y-3">
           <div className="flex items-center p-2 gap-5 ">
             <img
-              src={user?.photoURL}
+              src={user?.photoURL || ""}
               alt=""
               className="w-12 h-12 rounded-lg dark:bg-gray-500"
             />

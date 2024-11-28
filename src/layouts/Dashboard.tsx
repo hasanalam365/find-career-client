@@ -4,11 +4,13 @@ import { Outlet } from "react-router";
 
 const Dashboard = () => {
   return (
-    <div className="flex gap-10">
+    <div className="flex ">
       <div>
         <DashNav />
       </div>
-      <Outlet></Outlet>
+      <div className="bg-[#f1f1f1] p-8 w-full">
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 };
