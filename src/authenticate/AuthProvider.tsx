@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import app from "./firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 const googleProvider = new GoogleAuthProvider();
 
 const auth = getAuth(app);
@@ -33,7 +34,9 @@ interface AuthProviderProps {
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   //SignUp
   const signUpUser = (email: string, password: string) => {
@@ -61,8 +64,16 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       if (currentUser) {
-        setUser(currentUser || undefined);
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
       }
       setLoading(false);
     });
