@@ -4,10 +4,12 @@ import { UserCredential } from "firebase/auth";
 import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login: React.FC = () => {
   const { signInUser, googleSignIn } = useAuth();
   const [isOpenPassword, setIsOpenPassword] = useState(false);
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,8 +29,15 @@ const Login: React.FC = () => {
 
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then(() => {
-        navigate(location?.state || "/");
+      .then(async (result) => {
+        const userInfo = {
+          name: result.displayName,
+          email: result.email,
+        };
+        const res = await axiosPublic.post("/addUser", userInfo);
+        if (res.data.insertedId) {
+          navigate(location?.state || "/");
+        }
       })
       .catch((error) => {
         console.error("Error during Google sign-in:", error);

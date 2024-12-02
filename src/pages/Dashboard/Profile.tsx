@@ -1,9 +1,23 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Profile = () => {
   const { user } = useAuth();
   const [isSelect, setIsSelect] = useState(1);
+
+  const axiosSecure = useAxiosSecure();
+
+  const { data = [] } = useQuery({
+    queryKey: ["user-data"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/user/${user.email}`);
+      return res.data;
+    },
+  });
+
+  console.log(data, "emai");
 
   const timelines = [
     { id: 1, label: "My Circular" },
