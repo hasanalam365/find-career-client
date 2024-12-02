@@ -31,8 +31,8 @@ const Login: React.FC = () => {
     googleSignIn()
       .then(async (result) => {
         const userInfo = {
-          name: result.displayName,
-          email: result.email,
+          name: result.user.displayName,
+          email: result.user.email,
         };
         const res = await axiosPublic.post("/addUser", userInfo);
         if (res.data.insertedId) {
