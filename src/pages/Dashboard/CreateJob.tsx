@@ -25,6 +25,21 @@ const JobPost: React.FC = () => {
 
   const [education, setEducation] = useState<string>("");
 
+  const date = new Date();
+  const postDate = new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
+  date.setDate(date.getDate() + 15); // Add 15 days
+
+  const deadline = new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
   const handleEducationChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setEducation(event.target.value);
   };
@@ -49,6 +64,9 @@ const JobPost: React.FC = () => {
       holderEmail,
       responsibility,
       education,
+      postDate,
+
+      deadline,
     };
     try {
       const res = await axiosPublic.post("/createJob", jobData);
