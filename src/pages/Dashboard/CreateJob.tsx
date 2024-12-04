@@ -54,6 +54,7 @@ const JobPost: React.FC = () => {
     const responsibility = form.responsibility.value;
     const holderName = user?.displayName || userData?.name;
     const holderEmail = user?.email || userData?.email;
+    const profile = user?.photoURL;
 
     const jobData = {
       companyName,
@@ -65,8 +66,8 @@ const JobPost: React.FC = () => {
       responsibility,
       education,
       postDate,
-
       deadline,
+      profile,
     };
     try {
       const res = await axiosPublic.post("/createJob", jobData);
@@ -109,6 +110,40 @@ const JobPost: React.FC = () => {
                 placeholder="Enter Location"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
+            </div>
+            <div>
+              <label htmlFor="education">Education</label>
+              <select
+                name="education"
+                value={education}
+                onChange={handleEducationChange}
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
+                <option disabled value="">
+                  Pick One
+                </option>
+                <option>Under SSC</option>
+                <option>SSC/Dakhil</option>
+                <option>HSC/Alim</option>
+                <option>Graduated/Degree</option>
+                <option>Others (any type)</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="education">Education</label>
+              <select
+                name="education"
+                value={education}
+                onChange={handleEducationChange}
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
+                <option disabled value="">
+                  Pick One
+                </option>
+                <option>Under SSC</option>
+                <option>SSC/Dakhil</option>
+                <option>HSC/Alim</option>
+                <option>Graduated/Degree</option>
+                <option>Others (any type)</option>
+              </select>
             </div>
             <div className="md:mr-5">
               <label htmlFor="Sallary">Salary</label>
