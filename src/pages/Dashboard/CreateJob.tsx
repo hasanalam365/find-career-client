@@ -29,7 +29,6 @@ const JobPost: React.FC = () => {
   const navigate = useNavigate();
 
   const [upazilas] = useUpazilas(selectedAddress2);
-  console.log(upazilas);
 
   const { data: userData } = useQuery<UserData>({
     queryKey: ["user-data"],
@@ -61,7 +60,7 @@ const JobPost: React.FC = () => {
     setDivision(event.target.value);
     const selectedName = event.target.value;
     const selectedDivision = divisions.find(
-      (division) => division.name === selectedName
+      (division: { name: string }) => division.name === selectedName
     );
 
     if (selectedDivision) {
@@ -72,7 +71,7 @@ const JobPost: React.FC = () => {
     setDistrict(event.target.value);
     const selectedName = event.target.value;
     const selectedDistrict = districts.find(
-      (district) => district.name === selectedName
+      (district: { name: string }) => district.name === selectedName
     );
 
     if (selectedDistrict) {
@@ -87,17 +86,15 @@ const JobPost: React.FC = () => {
     e.preventDefault();
     const form = e.currentTarget;
     const companyName = form.companyName.value;
-    const location = form.location.value;
     const salary = form.sallary.value;
     const jobType = form.jobType.value;
     const responsibility = form.responsibility.value;
     const holderName = user?.displayName || userData?.name;
     const holderEmail = user?.email || userData?.email;
-    const profile = user?.photoURL;
+    const profileURL = user?.photoURL;
 
     const jobData = {
       companyName,
-      location,
       salary,
       jobType,
       holderName,
@@ -106,7 +103,12 @@ const JobPost: React.FC = () => {
       education,
       postDate,
       deadline,
-      profile,
+      profileURL,
+      location: {
+        division,
+        district,
+        upazila,
+      },
     };
     try {
       const res = await axiosPublic.post("/createJob", jobData);
@@ -152,7 +154,7 @@ const JobPost: React.FC = () => {
                 <option disabled value="">
                   Choose Division
                 </option>
-                {divisions.map((division) => (
+                {divisions.map((division: { id: string; name: string }) => (
                   <option key={division.name} value={division.name}>
                     {division.name}
                   </option>
@@ -170,7 +172,7 @@ const JobPost: React.FC = () => {
                 <option disabled value="">
                   Choose District
                 </option>
-                {districts.map((district) => (
+                {districts.map((district: { id: string; name: string }) => (
                   <option key={district.id} value={district.name}>
                     {district.name}
                   </option>
@@ -187,7 +189,7 @@ const JobPost: React.FC = () => {
                 <option disabled value="">
                   Choose Upazila
                 </option>
-                {upazilas.map((upazila) => (
+                {upazilas.map((upazila: { id: string; name: string }) => (
                   <option key={upazila.id} value={upazila.name}>
                     {upazila.name}
                   </option>
