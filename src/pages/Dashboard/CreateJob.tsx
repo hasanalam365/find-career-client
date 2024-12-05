@@ -4,6 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import useDivisions from "../../hooks/useDivisions";
+import useDistricts from "../../hooks/useDistricts";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface UserData {
   name: string;
@@ -13,20 +16,25 @@ interface UserData {
 const JobPost: React.FC = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const navigate = useNavigate();
-
-  const { data: userData } = useQuery<UserData>({
-    queryKey: ["user-data"],
-    queryFn: async () => {
-      const res = await axiosPublic.get(`/users/${user?.email}`);
-      return res.data;
-    },
-  });
-
+  const axiosSecure = useAxiosSecure();
+  const [divisions] = useDivisions();
+  const [districts] = useDistricts();
   const [education, setEducation] = useState<string>("");
   const [division, setDivision] = useState("");
   const [district, setDistrict] = useState("");
   const [upazila, setUpazila] = useState("");
+  const navigate = useNavigate();
+  const [selectedAddress, setSelectedAddress] = useState("");
+
+  console.log(selectedAddress);
+
+  const { data: userData } = useQuery<UserData>({
+    queryKey: ["user-data"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/user/${user?.email}`);
+      return res.data;
+    },
+  });
 
   const date = new Date();
   const postDate = new Intl.DateTimeFormat("en-GB", {
@@ -48,6 +56,14 @@ const JobPost: React.FC = () => {
   };
   const handledivisionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setDivision(event.target.value);
+    const selectedName = event.target.value;
+    const selectedDivision = divisions.find(
+      (division) => division.name === selectedName
+    );
+
+    if (selectedDivision) {
+      setSelectedAddress(selectedDivision.id);
+    }
   };
   const handleDistrictChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setDistrict(event.target.value);
@@ -125,6 +141,9 @@ const JobPost: React.FC = () => {
                 <option disabled value="">
                   Pick One
                 </option>
+                {divisions.map((division) => (
+                  <option key={division.name}>{division.name}</option>
+                ))}
               </select>
             </div>
 
