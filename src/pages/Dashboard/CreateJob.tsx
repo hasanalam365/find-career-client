@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import useDivisions from "../../hooks/useDivisions";
 import useDistricts from "../../hooks/useDistricts";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useUpazilas from "../../hooks/useUpazilas";
 
 interface UserData {
   name: string;
@@ -23,8 +24,12 @@ const JobPost: React.FC = () => {
   const [district, setDistrict] = useState("");
   const [upazila, setUpazila] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
+  const [selectedAddress2, setSelectedAddress2] = useState("");
   const [districts] = useDistricts(selectedAddress);
   const navigate = useNavigate();
+
+  const [upazilas] = useUpazilas(selectedAddress2);
+  console.log(upazilas);
 
   const { data: userData } = useQuery<UserData>({
     queryKey: ["user-data"],
@@ -65,6 +70,14 @@ const JobPost: React.FC = () => {
   };
   const handleDistrictChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setDistrict(event.target.value);
+    const selectedName = event.target.value;
+    const selectedDistrict = districts.find(
+      (district) => district.name === selectedName
+    );
+
+    if (selectedDistrict) {
+      setSelectedAddress2(selectedDistrict.id);
+    }
   };
   const handleUpazilaChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setUpazila(event.target.value);
@@ -137,7 +150,7 @@ const JobPost: React.FC = () => {
                 onChange={handledivisionChange}
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
                 <option disabled value="">
-                  Pick One
+                  Choose Division
                 </option>
                 {divisions.map((division) => (
                   <option key={division.name} value={division.name}>
@@ -155,7 +168,7 @@ const JobPost: React.FC = () => {
                 onChange={handleDistrictChange}
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
                 <option disabled value="">
-                  Pick One
+                  Choose District
                 </option>
                 {districts.map((district) => (
                   <option key={district.id} value={district.name}>
@@ -172,8 +185,13 @@ const JobPost: React.FC = () => {
                 onChange={handleUpazilaChange}
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
                 <option disabled value="">
-                  Pick One
+                  Choose Upazila
                 </option>
+                {upazilas.map((upazila) => (
+                  <option key={upazila.id} value={upazila.name}>
+                    {upazila.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="md:mr-5">
