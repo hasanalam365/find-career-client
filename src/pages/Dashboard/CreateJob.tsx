@@ -18,15 +18,13 @@ const JobPost: React.FC = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [divisions] = useDivisions();
-  const [districts] = useDistricts();
   const [education, setEducation] = useState<string>("");
   const [division, setDivision] = useState("");
   const [district, setDistrict] = useState("");
   const [upazila, setUpazila] = useState("");
-  const navigate = useNavigate();
   const [selectedAddress, setSelectedAddress] = useState("");
-
-  console.log(selectedAddress);
+  const [districts] = useDistricts(selectedAddress);
+  const navigate = useNavigate();
 
   const { data: userData } = useQuery<UserData>({
     queryKey: ["user-data"],
@@ -142,7 +140,9 @@ const JobPost: React.FC = () => {
                   Pick One
                 </option>
                 {divisions.map((division) => (
-                  <option key={division.name}>{division.name}</option>
+                  <option key={division.name} value={division.name}>
+                    {division.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -157,6 +157,11 @@ const JobPost: React.FC = () => {
                 <option disabled value="">
                   Pick One
                 </option>
+                {districts.map((district) => (
+                  <option key={district.id} value={district.name}>
+                    {district.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div>
