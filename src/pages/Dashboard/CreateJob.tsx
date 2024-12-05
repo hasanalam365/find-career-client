@@ -24,6 +24,9 @@ const JobPost: React.FC = () => {
   });
 
   const [education, setEducation] = useState<string>("");
+  const [division, setDivision] = useState("");
+  const [district, setDistrict] = useState("");
+  const [upazila, setUpazila] = useState("");
 
   const date = new Date();
   const postDate = new Intl.DateTimeFormat("en-GB", {
@@ -42,6 +45,15 @@ const JobPost: React.FC = () => {
 
   const handleEducationChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setEducation(event.target.value);
+  };
+  const handledivisionChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setDivision(event.target.value);
+  };
+  const handleDistrictChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setDistrict(event.target.value);
+  };
+  const handleUpazilaChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setUpazila(event.target.value);
   };
 
   const handleJobCreate = async (e: FormEvent<HTMLFormElement>) => {
@@ -102,47 +114,42 @@ const JobPost: React.FC = () => {
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
+
             <div>
-              <label htmlFor="Location">Location</label>
-              <input
-                name="location"
-                type="text"
-                placeholder="Enter Location"
-                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
-              />
-            </div>
-            <div>
-              <label htmlFor="education">Education</label>
+              <label htmlFor="division">Division</label>
               <select
-                name="education"
-                value={education}
-                onChange={handleEducationChange}
+                name="division"
+                value={division}
+                onChange={handledivisionChange}
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
                 <option disabled value="">
                   Pick One
                 </option>
-                <option>Under SSC</option>
-                <option>SSC/Dakhil</option>
-                <option>HSC/Alim</option>
-                <option>Graduated/Degree</option>
-                <option>Others (any type)</option>
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="district">District</label>
+              <select
+                name="district"
+                value={district}
+                onChange={handleDistrictChange}
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
+                <option disabled value="">
+                  Pick One
+                </option>
               </select>
             </div>
             <div>
-              <label htmlFor="education">Education</label>
+              <label htmlFor="upazila">Upazila</label>
               <select
-                name="education"
-                value={education}
-                onChange={handleEducationChange}
+                name="upazila"
+                value={upazila}
+                onChange={handleUpazilaChange}
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
                 <option disabled value="">
                   Pick One
                 </option>
-                <option>Under SSC</option>
-                <option>SSC/Dakhil</option>
-                <option>HSC/Alim</option>
-                <option>Graduated/Degree</option>
-                <option>Others (any type)</option>
               </select>
             </div>
             <div className="md:mr-5">
