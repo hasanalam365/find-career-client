@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import MyCirculars from "../../components/MyCirculars";
 
 const Profile = () => {
   const { user } = useAuth();
   const [isSelect, setIsSelect] = useState(1);
 
   const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic();
 
   const { data = [] } = useQuery({
     queryKey: ["user-data"],
@@ -20,15 +19,7 @@ const Profile = () => {
   });
 
   console.log(data);
-  const { data: myjobs = [] } = useQuery({
-    queryKey: ["my-job-data"],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/createJob/${user?.email}`);
 
-      return res.data;
-    },
-  });
-  console.log(myjobs);
   const timelines = [
     { id: 1, label: "My Circular" },
     { id: 2, label: "Aplly Job" },
@@ -96,9 +87,7 @@ const Profile = () => {
 
       {/* Job Circular post */}
       <div>
-        {myjobs.map((job) => (
-          <li key={job._id}>{job._id}</li>
-        ))}
+        <MyCirculars></MyCirculars>
       </div>
     </div>
   );
