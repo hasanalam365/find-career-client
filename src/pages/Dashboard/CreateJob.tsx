@@ -23,6 +23,7 @@ const JobPost: React.FC = () => {
   const [division, setDivision] = useState("");
   const [district, setDistrict] = useState("");
   const [upazila, setUpazila] = useState("");
+  const [jobType, setJobType] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedAddress2, setSelectedAddress2] = useState("");
   const [districts] = useDistricts(selectedAddress);
@@ -81,13 +82,16 @@ const JobPost: React.FC = () => {
   const handleUpazilaChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setUpazila(event.target.value);
   };
+  const handleJobTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setJobType(event.target.value);
+  };
 
   const handleJobCreate = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const companyName = form.companyName.value;
     const salary = form.sallary.value;
-    const jobType = form.jobType.value;
+    const jobTitle = form.jobTitle.value;
     const responsibility = form.responsibility.value;
     const holderName = user?.displayName || userData?.name;
     const holderEmail = user?.email || userData?.email;
@@ -97,6 +101,7 @@ const JobPost: React.FC = () => {
       companyName,
       salary,
       jobType,
+      jobTitle,
       holderName,
       holderEmail,
       responsibility,
@@ -223,21 +228,38 @@ const JobPost: React.FC = () => {
               </select>
             </div>
             <div className="md:mr-5">
-              <label htmlFor="Job Type">Job Type</label>
+              <label htmlFor="Job Type">Job Title</label>
               <input
-                name="jobType"
+                name="jobTitle"
                 type="text"
-                placeholder="Enter Job Type"
+                placeholder="Enter Job Title"
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"
               />
             </div>
-            <div className="md:mr-5">
+            <div>
+              <label htmlFor="upazila">Job Type</label>
+              <select
+                name="upazila"
+                value={jobType}
+                onChange={handleJobTypeChange}
+                className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg">
+                <option disabled value="">
+                  Choose one
+                </option>
+                <option value="Full Time">Full Time (In-Office)</option>
+                <option value="Part Time">Part Time (In-Office)</option>
+                <option value="Part Time">Full Time (Remote)</option>
+                <option value="Part Time">Part Time (Remote)</option>
+              </select>
+            </div>
+            <div className="md:col-span-2">
               <label htmlFor="Responsibility">Responsibility</label>
               <textarea
                 name="responsibility"
                 placeholder="Type..."
                 className="border p-2 w-full focus:outline-none focus:border-[#6300B3] rounded-lg"></textarea>
             </div>
+
             <div className="md:mr-5">
               <label htmlFor="holderName">Your Name</label>
               <input

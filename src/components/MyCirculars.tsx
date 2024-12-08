@@ -15,6 +15,8 @@ const MyCirculars = () => {
     },
   });
 
+  console.log(myjobs);
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -32,7 +34,7 @@ const MyCirculars = () => {
             {myjobs.map((job, idx: number) => (
               <tr key={idx}>
                 <th>{idx + 1}</th>
-                <td>Cy Ganderton</td>
+                <td></td>
                 <td>Quality Control Specialist</td>
                 <td>Blue</td>
               </tr>
