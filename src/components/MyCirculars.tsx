@@ -19,24 +19,30 @@ const MyCirculars = () => {
 
   return (
     <div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-5 rounded-lg ">
         <table className="table table-zebra">
           {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+          <thead className="">
+            <tr className="bg-gray-600 text-white ">
+              <th>SL No.</th>
+              <th>Title</th>
+              <th>Sallary</th>
+              <th>Deadline</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tbody>
             {myjobs.map((job, idx: number) => (
-              <tr key={idx}>
+              <tr
+                key={idx}
+                className={`${
+                  (idx + 1) / 2 === 0 ? "bg-gray-100" : "bg-white"
+                }`}>
                 <th>{idx + 1}</th>
-                <td></td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
+                <td>{job.jobTitle}</td>
+                <td>{job.salary}</td>
+                <td>{job.deadline}</td>
+                <td>VIEW</td>
               </tr>
             ))}
           </tbody>
