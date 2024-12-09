@@ -17,8 +17,6 @@ const MyCirculars = () => {
     },
   });
 
-  console.log(myjobs);
-
   return (
     <div>
       {isLoading ? (

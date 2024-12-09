@@ -18,8 +18,6 @@ const Profile = () => {
     },
   });
 
-  console.log(data);
-
   const timelines = [
     { id: 1, label: "My Circular" },
     { id: 2, label: "Aplly Job" },
