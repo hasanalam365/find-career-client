@@ -2,13 +2,12 @@ import { FaGraduationCap } from "react-icons/fa";
 import { GoBookmark } from "react-icons/go";
 import { MdOutlineWorkHistory } from "react-icons/md";
 import { TbBrandGravatar } from "react-icons/tb";
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData } from "react-router";
 
 const JobDetails = () => {
   const jobData = useLoaderData();
-  const params = useParams();
   console.log(jobData);
-  console.log(params);
+
   return (
     <div className="bg-[#F0F5FA]">
       <div className="p-8 flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-3">
@@ -195,6 +194,7 @@ const JobDetails = () => {
           </div>
         </div>
         {/* middle job details */}
+
         <div className="w-full md:w-full lg:w-2/4 p-4 border border-1 border-gray-200 rounded-lg ">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold">Sr. UX Designer</h2>
@@ -274,22 +274,25 @@ const JobDetails = () => {
         <div className="w-full md:w-full lg:w-1/4 border border-1 border-gray-200 rounded-lg p-4">
           <div>
             <div className="flex items-center justify-between">
-              <h4 className="text-lg font-medium">Netflix Inc.</h4>
+              <h4 className="text-lg font-medium">{jobData?.companyName}</h4>
               <TbBrandGravatar />
             </div>
             <div className="divider mt-0 mb-0"></div>
             <div>
               <div>
                 <p className="font-medium">Posted Job</p>
-                <p className="opacity-75">January 12,2024</p>
+                <p className="opacity-75">{jobData?.postDate}</p>
               </div>
               <div>
                 <p className="font-medium">Location</p>
-                <p className="opacity-75">New York City, USA</p>
+                <p className="opacity-75">
+                  {jobData?.location?.upazila}, {jobData?.location?.district},{" "}
+                  {jobData?.location?.division}
+                </p>
               </div>
               <div>
                 <p className="font-medium">Deadline</p>
-                <p className="opacity-75">July 31,2024</p>
+                <p className="opacity-75">{jobData?.deadline}</p>
               </div>
             </div>
             <div className="divider"></div>
