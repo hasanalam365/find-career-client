@@ -187,7 +187,7 @@ const Register = () => {
         <div className="flex items-center gap-1 justify-center mt-5">
           <p>Already have an account? Please</p>
           <Link to="/login" className="underline text-blue-600">
-            Login
+            Login here
           </Link>
         </div>
       </div>
