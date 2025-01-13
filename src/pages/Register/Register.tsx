@@ -78,7 +78,7 @@ const Register = () => {
         <h2 className="text-2xl font-bold mb-2">Registration</h2>
         <p className="md:w-3/4">
           Join us to explore top jobs opportunities or find the perfect
-          candidates. Let’s connect talent with opportunity!!
+          candidates. Let’s connect talent with opportunity!
         </p>
       </div>
       <div className="p-6 shadow-xl rounded-3xl">
@@ -187,7 +187,7 @@ const Register = () => {
         <div className="flex items-center gap-1 justify-center mt-5">
           <p>Already have an account? Please</p>
           <Link to="/login" className="underline text-blue-600">
-            Login
+            Login here
           </Link>
         </div>
       </div>
