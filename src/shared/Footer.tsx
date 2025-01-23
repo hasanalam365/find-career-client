@@ -8,7 +8,7 @@ const Footer = () => {
           <p>
             FindeHere Company Ltd.
             <br />
-            Providing reliable tech since 1992
+            Providing reliable tech since 2024
           </p>
         </aside>
         <nav>
@@ -19,13 +19,10 @@ const Footer = () => {
           <a className="link link-hover">Advertisement</a>
         </nav>
         <nav>
-       
-         
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
         </nav>
         <nav>
-        
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
         </nav>
