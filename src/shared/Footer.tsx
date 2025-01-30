@@ -23,6 +23,7 @@ const Footer = () => {
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Privacy policy</a>
+          <a className="link link-hover">Privacy policy</a>
         </nav>
       </footer>
     </div>
